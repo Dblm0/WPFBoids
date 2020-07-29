@@ -48,7 +48,7 @@ namespace WFPBoids
 
 
 
-        void GL_Init(object sender, OpenGLEventArgs args)
+        void GL_Init(object sender, OpenGLRoutedEventArgs args)
         {
             OpenGL GL = args.OpenGL;
             GL.ClearColor(0f, 0f, 0f, 0f);
@@ -62,14 +62,14 @@ namespace WFPBoids
         }
 
         List<Boid> Boids = new List<Boid>();
-        
+
         List<Boid> Predators = new List<Boid>();
         const float left_border = -500.0f;
         const float right_border = 500.0f;
         const float top_border = 500.0f;
         const float bottom_border = -500.0f;
 
-        void GLControl_Resized(object sender, OpenGLEventArgs args)
+        void GLControl_Resized(object sender, OpenGLRoutedEventArgs args)
         {
             OpenGL GL = args.OpenGL;
             GL.Clear(OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_COLOR_BUFFER_BIT);
@@ -87,7 +87,7 @@ namespace WFPBoids
             GL.LoadIdentity();
         }
 
-        void GLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
+        void GLControl_OpenGLDraw(object sender, OpenGLRoutedEventArgs args)
         {
             Boid.SetOptions(new BoidParameters
             {
@@ -137,7 +137,7 @@ namespace WFPBoids
 
             Parallel.ForEach(Predators, x =>
             {
-                x.Run(Boids);              
+                x.Run(Boids);
                 x.Border(
                     left: left_border,
                     right: right_border,
